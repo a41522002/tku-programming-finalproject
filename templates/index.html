@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>踩地雷 - Flask + C</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="container">
+    <h1>踩地雷</h1>
+    <p>Flask 前端 + C 後端引擎</p>
+
+    <section class="card">
+      <label for="difficulty">難度</label>
+      <select id="difficulty">
+        {% for name in difficulties.keys() %}
+          <option value="{{ name }}">{{ name }}</option>
+        {% endfor %}
+      </select>
+      <button id="startBtn">開始新遊戲</button>
+    </section>
+
+    <section id="gamePanel" class="hidden">
+      <div class="topbar">
+        <span id="statusText">狀態: playing</span>
+        <span id="mineText">地雷數: -</span>
+      </div>
+      <div id="board" class="board"></div>
+      <button id="restartBtn">重新開始</button>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
