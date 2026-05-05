@@ -1,0 +1,34 @@
+# 不要把這些檔案 COPY 進 image，可加快 build 並縮小 image
+
+# Git
+.git
+.gitignore
+
+# 編譯產物（image 內會重新編譯）
+backend/poker
+backend/*.o
+
+# Python 快取與虛擬環境
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# 文件 / 雜項
+README.md
+*.md
+.env
+.env.local
+*.log
+
+# Docker 自己
+Dockerfile
+.dockerignore
+docker-compose.yml

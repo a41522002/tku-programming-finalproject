@@ -1,0 +1,32 @@
+# C 編譯產物
+backend/poker
+backend/*.o
+backend/*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.Python
+
+# Flask
+instance/
+.webassets-cache
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# 環境變數
+.env
+.env.local
+
+# Logs
+*.log

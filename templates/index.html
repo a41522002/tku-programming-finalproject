@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>踩地雷 - Flask + C</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <meta charset="UTF-8">
+    <title>撲克牌比大小</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <main class="container">
-    <h1>踩地雷</h1>
-    <p>Flask 前端 + C 後端引擎</p>
+    <div class="bg-glow"></div>
 
-    <section class="card">
-      <label for="difficulty">難度</label>
-      <select id="difficulty">
-        {% for name in difficulties.keys() %}
-          <option value="{{ name }}">{{ name }}</option>
-        {% endfor %}
-      </select>
-      <button id="startBtn">開始新遊戲</button>
-    </section>
+    <main class="wrap">
+        <h1 class="title">
+            <span class="title-icon">♠</span>
+            撲克牌比大小
+            <span class="title-icon red">♥</span>
+        </h1>
+        <button id="dealBtn" class="deal-btn">
+            <span class="btn-text">開始發牌</span>
+        </button>
 
-    <section id="gamePanel" class="hidden">
-      <div class="topbar">
-        <span id="statusText">狀態: playing</span>
-        <span id="mineText">地雷數: -</span>
-      </div>
-      <div id="board" class="board"></div>
-      <button id="restartBtn">重新開始</button>
-    </section>
-  </main>
+        <!-- 洗牌動畫舞台 -->
+        <div class="shuffle-stage" id="shuffleStage">
+            <div class="deck-pile" id="deckPile"></div>
+        </div>
 
-  <script src="{{ url_for('static', filename='game.js') }}"></script>
+        <section class="result" id="resultBox" hidden>
+            <div class="winner-banner" id="winnerBanner"></div>
+
+            <div class="players">
+                <div class="player" id="p1Box">
+                    <h2>Player 1</h2>
+                    <div class="hand" id="hand1"></div>
+                    <div class="rank-name" id="rank1"></div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="player" id="p2Box">
+                    <h2>Player 2</h2>
+                    <div class="hand" id="hand2"></div>
+                    <div class="rank-name" id="rank2"></div>
+                </div>
+            </div>
+        </section>
+
+        <p class="error" id="errBox" hidden></p>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
